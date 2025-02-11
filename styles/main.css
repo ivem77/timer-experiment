@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #666;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.settings-button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+}
+
+/* Main container styles */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 2rem;
+}
+
+.timer-container {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+    text-align: center;
+}
+
+.status {
+    font-size: 1rem;
+    color: #333;
+    margin: 2rem 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+}
+
+/* Timer styles */
+.timer {
+    font-size: 6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.separator {
+    font-size: 2.5rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Play/Pause and Reset button container */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Play/Pause button styles */
+.play-pause {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.3s;
+    transform-origin: 50% 50%;
+    stroke: #C96716;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Reset button styles */
+.reset {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    display: none;
+    z-index: 1001;
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal:not([hidden]) {
+    display: block;
+}
+
+.modal-overlay:not([hidden]) {
+    display: block;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 1rem;
+}
+
+.time-inputs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.time-inputs input {
+    width: 100%;
+    text-align: center;
+}
+
+.time-inputs span {
+    color: #666;
+    font-size: 1rem;
+    padding: 0 0.25rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f8f8;
+}
+
+input:focus {
+    outline: none;
+    border-color: #333;
+    background: white;
+}
+input::placeholder {
+    color: #c9c9c9;
+}
+
+/* Remove spinner buttons from number inputs */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.save-settings {
+    width: 100%;
+    padding: 0.75rem;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius:24px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.save-settings:hover {
+    background: #444;
+} 

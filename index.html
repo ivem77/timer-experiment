@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <main class="container">
+        <div class="timer-container">
+            <header class="app-header">
+                <h1>Timer</h1>
+                <button class="settings-button" aria-label="Open settings" aria-haspopup="dialog">
+                    Settings
+                </button>
+            </header>
+
+            <div class="status">Work (×0)</div>
+            <div class="timer" role="timer" aria-label="Timer display">
+                <span class="minutes">25</span>
+                <span class="separator">:</span>
+                <span class="seconds">00</span>
+            </div>
+            
+            <div class="controls">
+                <button class="play-pause" aria-label="Start timer">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring__circle" stroke="#333" stroke-width="4" fill="transparent" 
+                                r="52" cx="60" cy="60"/>
+                    </svg>
+                    <span class="play-icon">▶</span>
+                </button>
+
+                <button class="reset" aria-label="Reset timer">Reset</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title">Set intervals</h2>
+                <button class="close-modal" aria-label="Close settings">×</button>
+            </header>
+            
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="work-title">Working on</label>
+                    <input type="text" id="work-title" name="work-title" 
+                           maxlength="50" placeholder="Something fun">
+                </div>
+                
+                <div class="form-group">
+                    <label for="work-minutes">Work duration</label>
+                    <div class="time-inputs">
+                        <input type="number" id="work-minutes" name="work-minutes" 
+                               min="0" max="59" value="25">
+                        <span>m</span>
+                        <input type="number" id="work-seconds" name="work-seconds" 
+                               min="0" max="59" value="0">
+                        <span>s</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="break-minutes">Break duration</label>
+                    <div class="time-inputs">
+                        <input type="number" id="break-minutes" name="break-minutes" 
+                               min="0" max="59" value="5">
+                        <span>m</span>
+                        <input type="number" id="break-seconds" name="break-seconds" 
+                               min="0" max="59" value="0">
+                        <span>s</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-settings">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" aria-hidden="true" hidden></div>
+
+    <script src="scripts/timer.js"></script>
+</body>
+</html> 
